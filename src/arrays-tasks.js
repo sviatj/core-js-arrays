@@ -323,8 +323,10 @@ function selectMany(arr, childrenSelector) {
  *   calculateBalance([ [ 10, 8 ], [ 1, 5 ] ])  => (10 - 8) + (1 - 5) = 2 + -4 = -2
  *   calculateBalance([]) => 0
  */
-function calculateBalance(/* arr */) {
-  throw new Error('Not implemented');
+function calculateBalance(arr) {
+  const balance = arr.map((elem) => elem[0] - elem[1]);
+  const res = balance.reduce((sum, current) => sum + current);
+  return res;
 }
 
 /**
@@ -355,8 +357,10 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  const start = 1;
+  const res = Array.from({ length: len }, (_, j) => start + j * 2);
+  return res;
 }
 
 /**
@@ -387,8 +391,8 @@ function getElementByIndices(/* arr, indices */) {
  *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  return arr.filter((elem) => Boolean(elem) === false).length;
 }
 
 /**
@@ -424,8 +428,15 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  const idx = [];
+  numbers.map((elem) => {
+    if (elem % 2 !== 0) {
+      idx.push(numbers.indexOf(elem));
+    }
+    return idx;
+  });
+  return idx;
 }
 
 /**
@@ -456,8 +467,11 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  const sort = arr.sort((a, b) => a - b);
+  const res = sort.slice(-n);
+  const res2 = res.sort((a, b) => b - a);
+  return res2;
 }
 
 /**
