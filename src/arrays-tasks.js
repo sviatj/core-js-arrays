@@ -37,8 +37,19 @@ function getIntervalArray(start, end) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  const res = arr1.map((elem, i) => elem + arr2[i]);
+  const copy = [...res];
+  if (arr2.length > arr1.length) {
+    copy.push(arr2[arr2.length - 1]);
+  }
+  if (arr2.length === 0) {
+    return arr1;
+  }
+  if (arr1.length === 0) {
+    return arr2;
+  }
+  return copy;
 }
 
 /**
@@ -449,8 +460,20 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  const numOfZero = { 1: '0', 2: '00', 3: '000', 4: '0000', 5: '00000' };
+  const res = arr.map((elem) => elem.toString(16).toUpperCase());
+  const newArr = [];
+  res.map((elem) => {
+    if (elem.length < 6) {
+      newArr.push(`#${numOfZero[6 - elem.length]}${elem}`);
+    }
+    if (elem.length === 6) {
+      newArr.push(`#${elem}`);
+    }
+    return newArr;
+  });
+  return newArr;
 }
 
 /**
@@ -486,8 +509,15 @@ function getMaxItems(arr, n) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  const duplicates = [];
+  arr1.map((elem) => {
+    if (arr2.includes(elem)) {
+      duplicates.push(elem);
+    }
+    return duplicates;
+  });
+  return duplicates;
 }
 
 /**
@@ -536,7 +566,7 @@ function propagateItemsByPositionIndex(/* arr */) {
  *    shiftArray(['a', 'b', 'c', 'd'], -1) => ['b', 'c', 'd', 'a']
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
-function shiftArray(/* arr, n */) {
+function shiftArray(/* arr */) {
   throw new Error('Not implemented');
 }
 
